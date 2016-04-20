@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Test : MonoBehaviour {
+public class TestActor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
