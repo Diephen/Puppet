@@ -2,8 +2,14 @@
 using System.Collections;
 
 public class Drag : MonoBehaviour {
-    private bool dragging = false;
-    private float distance;
+    bool dragging = false;
+    float distance;
+    Actors _draggedActor;
+    GameObject _draggedVictimGameObject;
+
+    void Awake() {
+        _draggedActor = gameObject.GetComponent<Actor> ()._thisActor;
+    }
 
     void OnMouseDown()
     {
@@ -14,15 +20,40 @@ public class Drag : MonoBehaviour {
     void OnMouseUp()
     {
         dragging = false;
+        CheckCollision ();
+       
     }
 
     void Update()
     {
         if (dragging)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
             Vector3 rayPoint = ray.GetPoint(distance);
             transform.position = rayPoint;
         }
+    }
+
+
+
+    void CheckCollision() {
+        Actors draggedVictim = Actors.Null;
+        //check if dropped on actor
+        if (_draggedVictimGameObject != null) {          
+            draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
+        }
+        Events.G.Raise(new DirectorUpdate(_draggedActor, draggedVictim));
+    }
+
+
+    void OnTriggerEnter(Collider other) {
+        if (dragging) {
+            Debug.Log (other.name);
+            _draggedVictimGameObject = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        _draggedVictimGameObject = null;
     }
 }
