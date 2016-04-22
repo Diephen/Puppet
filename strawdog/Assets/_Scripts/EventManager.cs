@@ -52,8 +52,8 @@ public class DirectorUpdate : GameEvent {
     }
 }
 
-public class EventManager {
-
-    }
+public class EventManager: MonoBehaviour {
+        
+}
 	
 

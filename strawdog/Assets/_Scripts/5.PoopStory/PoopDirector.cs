@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Director : MonoBehaviour {
-
+public class PoopDirector : MonoBehaviour {
     Girl _girlState = Girl.A;
     Door _doorState = Door.A;
     Chain _chainState = Chain.A;
     PoopMonster _poopMonsterState = PoopMonster.A;
     Shadow _shadowState = Shadow.A;
     PoopParticle _poopParticleState = PoopParticle.A;
+    public static int _turns;
+
+    void Awake(){
+        _turns = 0;       
+    }
 
     void OnEnable () {
         Events.G.AddListener<DirectorUpdate>(DirectMessage);
@@ -19,6 +23,7 @@ public class Director : MonoBehaviour {
     }
 
     void DirectMessage(DirectorUpdate e) {
+        _turns++;
         Actors actor = e.Actors;
         Actors victim = e.Victims;
         switch (actor)
