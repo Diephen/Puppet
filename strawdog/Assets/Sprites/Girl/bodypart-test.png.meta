@@ -1,0 +1,248 @@
+fileFormatVersion: 2
+guid: ccace28d2260141e3be00a69b5a5d928
+timeCreated: 1461448837
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bodypart-test_0
+    21300002: bodypart-test_1
+    21300004: bodypart-test_2
+    21300006: bodypart-test_3
+    21300008: bodypart-test_4
+    21300010: bodypart-test_5
+    21300012: bodypart-test_6
+    21300014: bodypart-test_7
+    21300016: bodypart-test_8
+    21300018: bodypart-test_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bodypart-test_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 418
+        width: 118
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59, y: 76}
+        - {x: -59, y: -71}
+        - {x: -41, y: -76}
+        - {x: 31, y: -76}
+        - {x: 59, y: -43}
+        - {x: 59, y: 62}
+        - {x: 38, y: 76}
+    - name: bodypart-test_1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 475
+        width: 34
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 36}
+        - {x: -17, y: 33}
+        - {x: -17, y: -30}
+        - {x: -14, y: -36}
+        - {x: 11, y: -36}
+        - {x: 17, y: -34}
+        - {x: 17, y: 34}
+        - {x: 14, y: 36}
+    - name: bodypart-test_2
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 479
+        width: 38
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 34}
+        - {x: -19, y: -6}
+        - {x: -14, y: -31}
+        - {x: -11, y: -34}
+        - {x: 12, y: -34}
+        - {x: 19, y: -11}
+        - {x: 19, y: 32}
+        - {x: 16, y: 34}
+    - name: bodypart-test_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 264
+        width: 33
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 58}
+        - {x: -16.5, y: 52}
+        - {x: -16.5, y: -47}
+        - {x: -10.5, y: -58}
+        - {x: 9.5, y: -58}
+        - {x: 13.5, y: -56}
+        - {x: 16.5, y: -40}
+        - {x: 16.5, y: 52}
+        - {x: 15.5, y: 58}
+    - name: bodypart-test_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 252
+        width: 46
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 67.5}
+        - {x: -23, y: 57.5}
+        - {x: -23, y: -46.5}
+        - {x: -11, y: -67.5}
+        - {x: 17, y: -67.5}
+        - {x: 23, y: -65.5}
+        - {x: 23, y: 45.5}
+        - {x: 18, y: 67.5}
+    - name: bodypart-test_5
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 222
+        width: 129
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: 95.5}
+        - {x: -64.5, y: -88.5}
+        - {x: -38.5, y: -95.5}
+        - {x: 22.5, y: -95.5}
+        - {x: 43.5, y: -91.5}
+        - {x: 64.5, y: -54.5}
+        - {x: 64.5, y: 79.5}
+        - {x: 41.5, y: 95.5}
+    - name: bodypart-test_6
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 83
+        width: 32
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 34}
+        - {x: -16, y: -34}
+        - {x: 14, y: -34}
+        - {x: 16, y: -27}
+        - {x: 16, y: 21}
+        - {x: 11, y: 34}
+    - name: bodypart-test_7
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 60
+        width: 35
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.5, y: 45.5}
+        - {x: -14.5, y: 39.5}
+        - {x: -17.5, y: 21.5}
+        - {x: -17.5, y: -31.5}
+        - {x: -9.5, y: -45.5}
+        - {x: 11.5, y: -45.5}
+        - {x: 17.5, y: -39.5}
+        - {x: 17.5, y: 45.5}
+    - name: bodypart-test_8
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 52
+        width: 52
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 62}
+        - {x: -26, y: 48}
+        - {x: -26, y: -7}
+        - {x: -12, y: -61}
+        - {x: -8, y: -62}
+        - {x: 18, y: -62}
+        - {x: 26, y: -56}
+        - {x: 26, y: 56}
+        - {x: 22, y: 62}
+    - name: bodypart-test_9
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 96
+        width: 4
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
