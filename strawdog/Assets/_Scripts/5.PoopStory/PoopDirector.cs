@@ -73,7 +73,7 @@ public class PoopDirector : MonoBehaviour {
             _girlState = Girl.atShadow;
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.jeer;
+            _shadowState = Shadow.talk;
             break;
         case Actors.LightsPoop:
             _girlState = Girl.atBlank;
@@ -110,7 +110,7 @@ public class PoopDirector : MonoBehaviour {
         case Actors.Girl:
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.jeer;
+            _shadowState = Shadow.talk;
             break;
         case Actors.Door:
             _doorState++;

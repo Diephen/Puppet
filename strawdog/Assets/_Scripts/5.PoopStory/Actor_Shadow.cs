@@ -21,18 +21,19 @@ public class Actor_Shadow : MonoBehaviour {
         switch (e.ShadowState) {
         case Shadow.hide:
             Debug.Log ("S.hide");
+            //hidden
             break;
         case Shadow.lurk:
             Debug.Log ("S.Lurk");
+            //existing in shadow
             break;
         case Shadow.talk:
             Debug.Log ("S.Talk");
-            break;
-        case Shadow.jeer:
-            Debug.Log ("S.Jeer");
+            //text shows up
             break;
         case Shadow.burn:
             Debug.Log ("S.Burn");
+            //play die animation
             break;
         }
         _priorState = e.ShadowState;

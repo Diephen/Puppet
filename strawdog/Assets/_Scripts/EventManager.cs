@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Actors {A, B, C, D, Girl, Door, Chain, PoopMonster, Shadow, LightsPoop, Null}
+public enum Actors {A, B, C, D, Girl, Door, Chain, PoopMonster, Shadow, LightsPoop, Hole, LightArea, Null}
 
 
 //Poop Story
@@ -9,7 +9,7 @@ public enum Girl {atDoor, atBlank, atShadow}
 public enum Door {closed, locked0, locked1, opening0, opening1, opened}
 public enum Chain {locked, loose}
 public enum PoopMonster {A, B, C, D, E, F}
-public enum Shadow {hide, lurk, talk, jeer, burn}
+public enum Shadow {hide, lurk, talk, burn}
 public enum LightsPoop {center, side}
 
 
