@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Actors {A, B, C, D, Girl, Door, Chain, PoopMonster, Shadow, PoopParticle, Null}
+public enum Actors {A, B, C, D, Girl, Door, Chain, PoopMonster, Shadow, LightsPoop, Null}
 
 
 //Poop Story
-public enum Girl {A, B, C, D}
-public enum Door {A, B, C, D}
-public enum Chain {A, B, C, D}
-public enum PoopMonster {A, B, C, D}
-public enum Shadow {A, B, C, D}
-public enum PoopParticle {A, B, C, D}
+public enum Girl {atDoor, atBlank, atShadow}
+public enum Door {closed, locked0, locked1, opening0, opening1, opened}
+public enum Chain {locked, loose}
+public enum PoopMonster {A, B, C, D, E, F}
+public enum Shadow {hide, lurk, talk, jeer, burn}
+public enum LightsPoop {center, side}
 
 
 public class ActorsInteract : GameEvent {
@@ -30,15 +30,15 @@ public class PoopStoryAct : GameEvent {
     public Chain ChainState { get; private set; }
     public PoopMonster PoopMonsterState { get; private set; }
     public Shadow ShadowState { get; private set; }
-    public PoopParticle PoopParticleState { get; private set; }
+    public LightsPoop LightsPoopState { get; private set; }
 
-    public PoopStoryAct (Girl girlState, Door doorState, Chain chainState, PoopMonster poopMonsterState, Shadow shadowState, PoopParticle poopParticleState){
+    public PoopStoryAct (Girl girlState, Door doorState, Chain chainState, PoopMonster poopMonsterState, Shadow shadowState, LightsPoop lightsPoopState){
         GirlState = girlState;
         DoorState = doorState;
         ChainState = chainState;
         PoopMonsterState = poopMonsterState;
         ShadowState = shadowState;
-        PoopParticleState = poopParticleState;
+        LightsPoopState = lightsPoopState;
     }
 }
 
