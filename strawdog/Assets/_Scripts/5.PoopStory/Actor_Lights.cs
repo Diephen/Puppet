@@ -5,6 +5,8 @@ public class Actor_Lights : MonoBehaviour {
 
     Actors _thisActor;
     LightsPoop _priorState;
+    [SerializeField] MinMax _lightRotationRange = new MinMax(70f, 120f);
+
 
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
@@ -28,29 +30,30 @@ public class Actor_Lights : MonoBehaviour {
             break;
         }
         _priorState = e.LightsPoopState;
-
     }
 
-
-    void OnMouseDown(){
-//        Vector3 mousePosition = 
-    
-    }
     void OnMouseDrag(){
         Vector3 mouseDelta = Input.mousePosition;
 
         Vector3 worldMouse = Camera.main.ScreenToWorldPoint (mouseDelta);
 
         float angle = Mathf.Atan2 (worldMouse.y - transform.position.y, worldMouse.x - transform.position.x) * Mathf.Rad2Deg;
-        if (angle < 0) { 
-            angle += 360;
-        }
+//        if (angle < 0) { 
+//            angle += 360;
+//        }
 
-        Debug.Log (angle);
+        float tempAngle;
+        if (_lightRotationRange.Max < angle) {
+            tempAngle = _lightRotationRange.Max;
+        } else if (_lightRotationRange.Min > angle){
+            tempAngle = _lightRotationRange.Min;
+        } else {
+            tempAngle = angle;
+        }
 
         transform.localEulerAngles = new Vector3 
             (transform.localEulerAngles.x,
                 transform.localEulerAngles.y, 
-                angle+90);
+                tempAngle+90);
     }
 }
