@@ -6,6 +6,7 @@ public class Actor_Lights : MonoBehaviour {
     Actors _thisActor;
     LightsPoop _priorState;
     [SerializeField] MinMax _lightRotationRange = new MinMax(70f, 120f);
+    [SerializeField] GameObject _lightBeam;
 
 
     void Awake () {
@@ -37,7 +38,9 @@ public class Actor_Lights : MonoBehaviour {
 
         Vector3 worldMouse = Camera.main.ScreenToWorldPoint (mouseDelta);
 
-        float angle = Mathf.Atan2 (worldMouse.y - transform.position.y, worldMouse.x - transform.position.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2 (
+            worldMouse.y - transform.position.y, 
+            worldMouse.x - transform.position.x) * Mathf.Rad2Deg;
 //        if (angle < 0) { 
 //            angle += 360;
 //        }
@@ -55,5 +58,10 @@ public class Actor_Lights : MonoBehaviour {
             (transform.localEulerAngles.x,
                 transform.localEulerAngles.y, 
                 tempAngle+90);
+
+        _lightBeam.transform.position = new Vector3 
+            ((1f / (Mathf.Tan (tempAngle*Mathf.Deg2Rad) / (2.75f - transform.position.y))) + transform.position.x, 
+                _lightBeam.transform.position.y, 
+                _lightBeam.transform.position.z);
     }
 }
