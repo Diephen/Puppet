@@ -15,8 +15,12 @@ public class Actor_Shadow : MonoBehaviour {
 
     void Awake () {
 //        _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
-        _shadowSp = gameObject.GetComponentInParent<ShadowSpawner> ();
         _boxC2D = gameObject.GetComponent<BoxCollider2D> ();
+
+    }
+
+    public void shadowSpawnComponent () {
+        _shadowSp = gameObject.GetComponentInParent<ShadowSpawner> ();
     }
 
     void OnEnable () {
@@ -30,6 +34,8 @@ public class Actor_Shadow : MonoBehaviour {
     public void AssignID (int number){
         idNumber = number;
         //getting the text information as well
+        Debug.Log (number);
+        Debug.Log (_shadowSp.TalkGetter (number));
         _thisTalk = _shadowSp.TalkGetter (number);
         _thisJeer = _shadowSp.JeerGetter (number);
     }
@@ -41,6 +47,7 @@ public class Actor_Shadow : MonoBehaviour {
             //existing in shadow
             break;
         case Shadow.jeer:
+            Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Jeer");
                 Speak (_thisJeer);
@@ -48,6 +55,7 @@ public class Actor_Shadow : MonoBehaviour {
             //existing in shadow
             break;
         case Shadow.talk:
+            Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Talk");
                 Speak (_thisTalk);

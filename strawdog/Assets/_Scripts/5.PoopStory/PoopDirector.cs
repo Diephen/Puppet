@@ -124,6 +124,7 @@ public class PoopDirector : MonoBehaviour {
         {
         case Actors.Girl:
             _doorState++;
+//            _doorState = Door.closed;
             _poopMonsterState++;
             _shadowState = Shadow.talk;
             break;
