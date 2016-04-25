@@ -33,6 +33,10 @@ public class Actor_Lights : MonoBehaviour {
 
 
     void OnMouseDown(){
+//        Vector3 mousePosition = 
+    
+    }
+    void OnMouseDrag(){
         Vector3 mouseDelta = Input.mousePosition;
 
         Vector3 worldMouse = Camera.main.ScreenToWorldPoint (mouseDelta);
@@ -48,6 +52,5 @@ public class Actor_Lights : MonoBehaviour {
             (transform.localEulerAngles.x,
                 transform.localEulerAngles.y, 
                 angle+90);
-    
     }
 }
