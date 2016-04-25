@@ -4,6 +4,7 @@ using System.Collections;
 public class Actor_Girl : MonoBehaviour {
 
     Actors _thisActor;
+    Girl _priorState;
 
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
@@ -18,18 +19,19 @@ public class Actor_Girl : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
-        //        if (_thisActor == e.Actors){
-        //            Debug.Log ("actor " + _thisActor);
-        //        } else if (_thisActor == e.Victims) {
-        //            Debug.Log ("victim" + _thisActor);
-        //        } else {
-        //            Debug.Log ("static" + _thisActor);
-        //        }
-        //        e.GirlState;
-        //        e.DoorState;
-        //        e.ChainState;
-        //        e.PoopMonsterState;
-        //        e.ShadowState;
-        //        e.PoopParticleState;
+        switch (e.GirlState) {
+        case Girl.atBlank:
+            Debug.Log ("Girl At Blank");
+            break;
+        case Girl.atDoor:
+            Debug.Log ("Girl is at door");
+            //condition to allow door
+            //snap girl into position
+            break;
+        case Girl.atShadow:
+            Debug.Log ("Girl is at Shadow");
+            break;
+        }
+        _priorState = e.GirlState;
     }
 }

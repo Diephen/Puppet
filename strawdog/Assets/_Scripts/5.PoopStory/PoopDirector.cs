@@ -95,8 +95,23 @@ public class PoopDirector : MonoBehaviour {
     }
 
     void ChainMessage(Actors victim){
-        _doorState++;
-        _poopMonsterState++;
+        
+        switch(victim){
+        case Actors.Hole:
+//            _chainState = Chain.locked;
+            if (_doorState == Door.opening1) {
+                _doorState = Door.locked1;
+                _poopMonsterState = PoopMonster.C;
+            } else {
+                _doorState--;
+                _poopMonsterState--;
+            }
+            break;
+        default:
+            _doorState++;
+            _poopMonsterState++;
+            break;
+        }
     }
 
     void PoopMonsterMessage(Actors victim){

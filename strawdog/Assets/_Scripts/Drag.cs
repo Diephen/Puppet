@@ -42,6 +42,9 @@ public class Drag : MonoBehaviour {
         if (_draggedVictimGameObject != null) {          
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
         }
+        if(draggedVictim == Actors.Shadow){
+            _draggedVictimGameObject.GetComponent <Actor_Shadow> ().ThisShadow ();
+        }
         Events.G.Raise(new DirectorUpdate(_draggedActor, draggedVictim));
     }
 
