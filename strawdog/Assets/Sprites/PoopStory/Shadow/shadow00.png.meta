@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 763e665af19094c47b5e5991755bbd41
-timeCreated: 1461569943
-=======
-guid: a6f31bd79799c4db2b8328c1573fc98d
-timeCreated: 1461570252
->>>>>>> fancy
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -35,7 +28,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0

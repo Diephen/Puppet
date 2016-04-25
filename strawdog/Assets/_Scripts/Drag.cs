@@ -7,34 +7,28 @@ public class Drag : MonoBehaviour {
     Actors _draggedActor;
     GameObject _draggedVictimGameObject;
 
+
     void Awake() {
         _draggedActor = gameObject.GetComponent<Actor> ()._thisActor;
     }
 
-    void OnMouseDown()
-    {
+    void OnMouseDown() {
         distance = Vector3.Distance(transform.position, Camera.main.transform.position);
         dragging = true;
     }
 
-    void OnMouseUp()
-    {
+    void OnMouseUp() {
         dragging = false;
         CheckCollision ();
-       
     }
 
-    void Update()
-    {
-        if (dragging)
-        {
+    void Update() {
+        if (dragging) {
             Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
             Vector3 rayPoint = ray.GetPoint(distance);
             transform.position = rayPoint;
         }
     }
-
-
 
     void CheckCollision() {
         Actors draggedVictim = Actors.Null;
@@ -59,4 +53,6 @@ public class Drag : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other) {
         _draggedVictimGameObject = null;
     }
+
+
 }
