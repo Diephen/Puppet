@@ -9,7 +9,7 @@ public enum Girl {atDoor, atBlank, atShadow}
 public enum Door {closed, locked0, locked1, opening0, opening1, opened}
 public enum Chain {locked, loose, draggable, nonDraggable}
 public enum PoopMonster {A, B, C, D, E, F}
-public enum Shadow {hide, lurk, talk, burn}
+public enum Shadow {hide, lurk, talk, jeer, burn}
 public enum LightsPoop {center, side}
 
 

@@ -2,12 +2,21 @@
 using System.Collections;
 
 public class Actor_Shadow : MonoBehaviour {
-    Actors _thisActor;
-    Shadow _priorState;
+//    Actors _thisActor;
+//    Shadow _priorState;
     bool _isThisShadow = false;
+    int idNumber;
+    ShadowSpawner _shadowSp;
+    [SerializeField] TextMesh _tm;
+    BoxCollider2D _boxC2D;
+
+    string _thisJeer;
+    string _thisTalk;
 
     void Awake () {
-        _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
+//        _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
+        _shadowSp = gameObject.GetComponentInParent<ShadowSpawner> ();
+        _boxC2D = gameObject.GetComponent<BoxCollider2D> ();
     }
 
     void OnEnable () {
@@ -18,28 +27,44 @@ public class Actor_Shadow : MonoBehaviour {
         Events.G.RemoveListener<PoopStoryAct>(ActFunction);
     }
 
+    public void AssignID (int number){
+        idNumber = number;
+        //getting the text information as well
+        _thisTalk = _shadowSp.TalkGetter (number);
+        _thisJeer = _shadowSp.JeerGetter (number);
+    }
+
     public void ActFunction (PoopStoryAct e) {
         switch (e.ShadowState) {
-        case Shadow.hide:
-            Debug.Log ("S.hide");
-
-            //hidden
-            break;
         case Shadow.lurk:
             Debug.Log ("S.Lurk");
             //existing in shadow
             break;
+        case Shadow.jeer:
+            if(_isThisShadow){
+                Debug.Log ("S.Jeer");
+                Speak (_thisJeer);
+            }
+            //existing in shadow
+            break;
         case Shadow.talk:
-            Debug.Log ("S.Talk");
-            //text shows up
+            if(_isThisShadow){
+                Debug.Log ("S.Talk");
+                Speak (_thisTalk);
+            }
             break;
         case Shadow.burn:
             Debug.Log ("S.Burn");
             //play die animation
+            _boxC2D.enabled = false;
             break;
         }
         _isThisShadow = false;
-        _priorState = e.ShadowState;
+//        _priorState = e.ShadowState;
+    }
+
+    void Speak (string content) {
+        _tm.text = content;
     }
 
     void OnMouseDown(){
