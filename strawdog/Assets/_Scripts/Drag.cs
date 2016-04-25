@@ -26,6 +26,7 @@ public class Drag : MonoBehaviour {
         if (dragging) {
             Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
             Vector3 rayPoint = ray.GetPoint(distance);
+            rayPoint.z = transform.position.z;
             transform.position = rayPoint;
         }
     }
@@ -39,13 +40,14 @@ public class Drag : MonoBehaviour {
         if(draggedVictim == Actors.Shadow){
             _draggedVictimGameObject.GetComponent <Actor_Shadow> ().ThisShadow ();
         }
+        Debug.Log ("Act: " + _draggedActor+", Vict: " + draggedVictim);
         Events.G.Raise(new DirectorUpdate(_draggedActor, draggedVictim));
     }
 
 
     void OnTriggerEnter2D(Collider2D other) {
         if (dragging) {
-            Debug.Log (other.name);
+//            Debug.Log (other.name);
             _draggedVictimGameObject = other.gameObject;
         }
     }

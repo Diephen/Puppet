@@ -21,15 +21,15 @@ public class Actor_Girl : MonoBehaviour {
     public void ActFunction (PoopStoryAct e) {
         switch (e.GirlState) {
         case Girl.atBlank:
-            Debug.Log ("Girl At Blank");
+//            Debug.Log ("Girl At Blank");
             break;
         case Girl.atDoor:
-            Debug.Log ("Girl is at door");
+//            Debug.Log ("Girl is at door");
             //condition to allow door
             //snap girl into position
             break;
         case Girl.atShadow:
-            Debug.Log ("Girl is at Shadow");
+//            Debug.Log ("Girl is at Shadow");
             break;
         }
         _priorState = e.GirlState;
