@@ -6,6 +6,8 @@ public class Actor_Door : MonoBehaviour {
     Actors _thisActor;
     Door _priorState;
 
+    Animator _doorAnimator;
+
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
     }
