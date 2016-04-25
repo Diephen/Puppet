@@ -42,18 +42,21 @@ public class Drag : MonoBehaviour {
         if (_draggedVictimGameObject != null) {          
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
         }
+        if(draggedVictim == Actors.Shadow){
+            _draggedVictimGameObject.GetComponent <Actor_Shadow> ().ThisShadow ();
+        }
         Events.G.Raise(new DirectorUpdate(_draggedActor, draggedVictim));
     }
 
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (dragging) {
             Debug.Log (other.name);
             _draggedVictimGameObject = other.gameObject;
         }
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit2D(Collider2D other) {
         _draggedVictimGameObject = null;
     }
 }

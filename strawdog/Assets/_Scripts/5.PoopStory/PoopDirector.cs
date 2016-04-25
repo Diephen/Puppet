@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class PoopDirector : MonoBehaviour {
-    Girl _girlState = Girl.A;
-    Door _doorState = Door.A;
-    Chain _chainState = Chain.A;
+    Girl _girlState = Girl.atBlank;
+    Door _doorState = Door.closed;
+    Chain _chainState = Chain.locked;
     PoopMonster _poopMonsterState = PoopMonster.A;
-    Shadow _shadowState = Shadow.A;
-    PoopParticle _poopParticleState = PoopParticle.A;
+    Shadow _shadowState = Shadow.hide;
+    LightsPoop _lightsPoopState = LightsPoop.center;
     public static int _turns;
 
     void Awake(){
@@ -29,11 +29,9 @@ public class PoopDirector : MonoBehaviour {
         switch (actor)
         {
         case Actors.Girl:
-            Debug.Log ("girl AS EXPECTED");
             GirlMessage (victim);
             break;
         case Actors.Door:
-            Debug.Log ("door AS EXPECTED");
             DoorMessage (victim);
             break;
         case Actors.Chain:
@@ -45,61 +43,121 @@ public class PoopDirector : MonoBehaviour {
         case Actors.Shadow:
             ShadowMessage (victim);
             break;
-        case Actors.PoopParticle:
-            PoopParticleMessage (victim);
+        case Actors.LightsPoop:
+            LightsPoopMessage (victim);
             break;
         }
-        Events.G.Raise (new PoopStoryAct (_girlState, _doorState, _chainState, _poopMonsterState, _shadowState, _poopParticleState));
+        //determine Chain State here
+        Events.G.Raise (new PoopStoryAct (_girlState, _doorState, _chainState, _poopMonsterState, _shadowState, _lightsPoopState));
     }
 	
     void GirlMessage(Actors victim){
         switch (victim)
         {
-//        case Actors.girl:
-//            GirlMessage (victim);
-//            break;
         case Actors.Door:
-            Debug.Log ("Duurr AS EXPECTED");
-//            DoorMessage (victim);
-
+            _girlState = Girl.atDoor;
+            _doorState++;
+            _poopMonsterState++;
             break;
         case Actors.Chain:
-            Debug.Log ("churn AS EXPECTED");
-//            ChainMessage (victim);
+            _girlState = Girl.atDoor;
+            _doorState++;
+            _poopMonsterState++;
             break;
         case Actors.PoopMonster:
-//            PoopMonsterMessage (victim);
+            _girlState = Girl.atDoor;
+            _doorState++;
+            _poopMonsterState++;
             break;
         case Actors.Shadow:
-//            ShadowMessage (victim);
+            _girlState = Girl.atShadow;
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
             break;
-        case Actors.PoopParticle:
-//            PoopParticleMessage (victim);
+        case Actors.LightsPoop:
+            _girlState = Girl.atBlank;
+            _doorState++;
+            _poopMonsterState++;
             break;
         default:
-            Debug.Log ("Null");
+            _girlState = Girl.atBlank;
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.hide;
             break;
         }
     }
 
     void DoorMessage(Actors victim){
-        
+        _doorState++;
+        _poopMonsterState++;
     }
 
     void ChainMessage(Actors victim){
         
+        switch(victim){
+        case Actors.Hole:
+//            _chainState = Chain.locked;
+            if (_doorState == Door.opening1) {
+                _doorState = Door.locked1;
+                _poopMonsterState = PoopMonster.C;
+            } else {
+                _doorState--;
+                _poopMonsterState--;
+            }
+            break;
+        default:
+            _doorState++;
+            _poopMonsterState++;
+            break;
+        }
     }
 
     void PoopMonsterMessage(Actors victim){
-        
+        _doorState++;
+        _poopMonsterState++;
     }
 
     void ShadowMessage(Actors victim){
-        
+        switch (victim)
+        {
+        case Actors.Girl:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
+            break;
+        case Actors.Door:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
+            break;
+        case Actors.Chain:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
+            break;
+        case Actors.PoopMonster:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
+            break;
+        case Actors.LightsPoop:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.burn;
+            break;
+        default:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.talk;
+            break;
+        }
     }
 
-    void PoopParticleMessage(Actors victim){
-        
+    void LightsPoopMessage(Actors victim){
+        _doorState++;
+        _poopMonsterState++;
     }
 
 }
