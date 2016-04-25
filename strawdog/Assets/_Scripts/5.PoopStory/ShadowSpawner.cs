@@ -9,6 +9,8 @@ public class ShadowSpawner : MonoBehaviour {
     [SerializeField] string[] jeerText = new string[5];
     [SerializeField] string[] talkText = new string[5];
 
+    Actor_Shadow _actShade;
+
     public string TalkGetter (int number) {
         return talkText [number];
     }
@@ -27,9 +29,13 @@ public class ShadowSpawner : MonoBehaviour {
 
     public void ActFunction (PoopStoryAct e) {
         if(e.DoorState == Door.closed){
-            if (_shadowCnt < (_maxShadow + 1)) {
+            if (_shadowCnt < (_maxShadow)) {
                 GameObject newShadow = (GameObject)Instantiate (shadowPrefab, new Vector3 (0f, 0f, 0f), Quaternion.identity);
-                newShadow.GetComponent <Actor_Shadow> ().AssignID (_shadowCnt);
+                newShadow.transform.parent = transform;
+
+                _actShade = newShadow.GetComponent <Actor_Shadow> ();
+                _actShade.shadowSpawnComponent ();
+                _actShade.AssignID (_shadowCnt);
                 _shadowCnt++;
             }
         }
