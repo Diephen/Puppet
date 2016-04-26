@@ -4,13 +4,17 @@ using System.Collections;
 public class Hole : MonoBehaviour {
 
     [SerializeField] bool _available = true;
+	[SerializeField] GameObject _chain;
+	Animator chain_Anim;
     BoxCollider2D bc2;
 
     void Start () {
         bc2 = gameObject.GetComponent <BoxCollider2D> ();
+		chain_Anim = _chain.GetComponent<Animator> ();
+
     }
 
-    public void locked(){
+	public void locked(){
         _available = false;
         bc2.enabled = false;
     }
@@ -24,9 +28,11 @@ public class Hole : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
-        if (e.DoorState == Door.opened) {
+		if (e.DoorState == Door.opening0) {
             _available = true;
             bc2.enabled = true;
+			chain_Anim.Play ("break");
+
         }
     }
 }
