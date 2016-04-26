@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Actor))]
 public class Actor_Chains : MonoBehaviour {
 
     Actors _thisActor;
@@ -66,7 +67,7 @@ public class Actor_Chains : MonoBehaviour {
         if (_draggedVictimGameObject != null) {          
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
             if(draggedVictim == Actors.Hole){
-                _draggedVictimGameObject.GetComponent<Hole> ().locked ();
+				_draggedVictimGameObject.GetComponent<Hole> ().locked ();
 //                GUISettings hole as undragintoable
 //                _draggedVictimGameObject.
             }
