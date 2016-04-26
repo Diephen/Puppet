@@ -35,7 +35,8 @@ public class Drag : MonoBehaviour {
     void CheckCollision() {
         
         //check if dropped on actor
-        if (_draggedVictimGameObject != null) {          
+        if (_draggedVictimGameObject != null && _draggedVictimGameObject.GetComponent <Actor> () != null) {    
+            
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
         } else {
             draggedVictim = Actors.Null;
