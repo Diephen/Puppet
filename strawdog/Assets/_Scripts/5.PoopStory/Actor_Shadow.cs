@@ -35,8 +35,8 @@ public class Actor_Shadow : MonoBehaviour {
     public void AssignID (int number){
         idNumber = number;
         //getting the text information as well
-        Debug.Log (number);
-        Debug.Log (_shadowSp.TalkGetter (number));
+//        Debug.Log (number);
+//        Debug.Log (_shadowSp.TalkGetter (number));
         _thisTalk = _shadowSp.TalkGetter (number);
         _thisJeer = _shadowSp.JeerGetter (number);
     }
