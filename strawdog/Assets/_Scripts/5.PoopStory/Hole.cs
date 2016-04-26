@@ -29,7 +29,9 @@ public class Hole : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
+        Debug.Log (e.DoorState);
 		if (e.DoorState == Door.opening0) {
+            
             _available = true;
             bc2.enabled = true;
 			chain_Anim.Play ("break");

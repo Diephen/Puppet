@@ -25,6 +25,7 @@ public class Actor_Door : MonoBehaviour {
     public void ActFunction (PoopStoryAct e) {
         switch (e.DoorState) {
 		case Door.closed:
+            _doorAnimator.Play ("Door0");
             break;
 		case Door.locked0:
 			_doorAnimator.Play ("Door1");
