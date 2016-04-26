@@ -11,6 +11,8 @@ public class ShadowSpawner : MonoBehaviour {
     [SerializeField] string[] talkText = new string[5];
     [SerializeField] Vector3[] _spawnPos = new Vector3[5];
 
+    int _shadowDeath = 0;
+
     Actor_Shadow _actShade;
 
     public string TalkGetter (int number) {
@@ -19,6 +21,10 @@ public class ShadowSpawner : MonoBehaviour {
 
     public string JeerGetter (int number) {
         return jeerText [number];
+    }
+
+    public void ShadowDeathHandler () {
+        _shadowDeath++;
     }
 
     void OnEnable () {
@@ -52,6 +58,12 @@ public class ShadowSpawner : MonoBehaviour {
                 _actShade.shadowSpawnComponent ();
                 _actShade.AssignID (_shadowCnt);
                 _shadowCnt++;
+            }
+        } else if(e.DoorState == Door.opened) {
+            if(_shadowDeath == _maxShadow){
+                //ENDING 
+            } else {
+                //OTHER ENDING
             }
         }
     }

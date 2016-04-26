@@ -9,14 +9,20 @@ public class Actor_Shadow : MonoBehaviour {
     int idNumber;
     ShadowSpawner _shadowSp;
     [SerializeField] TextMesh _tm;
-    BoxCollider2D _boxC2D;
+    PolygonCollider2D _boxC2D;
+    SpriteRenderer _spriteRend;
+    Animator _shadowAnimator;
+
+
 
     string _thisJeer;
     string _thisTalk;
 
     void Awake () {
 //        _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
-        _boxC2D = gameObject.GetComponent<BoxCollider2D> ();
+        _boxC2D = gameObject.GetComponent<PolygonCollider2D> ();
+        _spriteRend = gameObject.GetComponent <SpriteRenderer> ();
+        _shadowAnimator = gameObject.GetComponent<Animator> ();
 
     }
 
@@ -82,5 +88,18 @@ public class Actor_Shadow : MonoBehaviour {
         
     public void ThisShadow () {
         _isThisShadow = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+//        if (dragging) {
+//            //            Debug.Log (other.name);
+        if(other.tag == "AOE"){
+            Debug.Log ("DEAD");
+
+            _boxC2D.enabled = false;
+//            _spriteRend.enabled = false;
+            _shadowAnimator.Play ("Death");
+            _shadowSp.ShadowDeathHandler ();
+        }
     }
 }
