@@ -5,6 +5,7 @@ public class Drag : MonoBehaviour {
     bool dragging = false;
     float distance;
     Actors _draggedActor;
+    Actors draggedVictim;
     GameObject _draggedVictimGameObject;
 
 
@@ -32,10 +33,12 @@ public class Drag : MonoBehaviour {
     }
 
     void CheckCollision() {
-        Actors draggedVictim = Actors.Null;
+        
         //check if dropped on actor
         if (_draggedVictimGameObject != null) {          
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
+        } else {
+            draggedVictim = Actors.Null;
         }
         if(draggedVictim == Actors.Shadow){
             _draggedVictimGameObject.GetComponent <Actor_Shadow> ().ThisShadow ();
