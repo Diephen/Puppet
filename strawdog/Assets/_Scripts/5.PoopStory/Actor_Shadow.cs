@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Actor))]
 public class Actor_Shadow : MonoBehaviour {
 //    Actors _thisActor;
 //    Shadow _priorState;

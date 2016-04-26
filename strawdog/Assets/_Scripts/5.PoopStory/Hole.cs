@@ -17,6 +17,7 @@ public class Hole : MonoBehaviour {
 	public void locked(){
         _available = false;
         bc2.enabled = false;
+        chain_Anim.Play ("idle");
     }
 
     void OnEnable () {

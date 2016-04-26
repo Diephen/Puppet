@@ -85,6 +85,7 @@ public class PoopDirector : MonoBehaviour {
             _doorState++;
             _poopMonsterState++;
             _shadowState = Shadow.hide;
+//            _doorState = Door.opening0;
             break;
         }
     }

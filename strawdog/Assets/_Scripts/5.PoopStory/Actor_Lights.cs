@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Actor))]
 public class Actor_Lights : MonoBehaviour {
 
     Actors _thisActor;
