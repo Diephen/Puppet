@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Actor))]
 public class Actor_Monster : MonoBehaviour {
 
     Actors _thisActor;
@@ -23,22 +24,16 @@ public class Actor_Monster : MonoBehaviour {
     public void ActFunction (PoopStoryAct e) {
         switch (e.PoopMonsterState) {
         case PoopMonster.A:
-            Debug.Log ("closed");
             break;
         case PoopMonster.B:
-            Debug.Log ("locked0");
             break;
         case PoopMonster.C:
-            Debug.Log ("locked1");
             break;
         case PoopMonster.D:
-            Debug.Log ("opened");
             break;
         case PoopMonster.E:
-            Debug.Log ("opening0");
             break;
         case PoopMonster.F:
-            Debug.Log ("opening1");
             break;
         }
         _priorState = e.PoopMonsterState;

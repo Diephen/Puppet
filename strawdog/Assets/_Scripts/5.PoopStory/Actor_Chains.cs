@@ -3,7 +3,11 @@ using System.Collections;
 
 [RequireComponent (typeof(Actor))]
 public class Actor_Chains : MonoBehaviour {
+    [SerializeField] int tempFix = 0;
 
+
+    [SerializeField] float _rotationOffset;
+//    [SerializeField] MinMax _chainRotationRange = new MinMax(0f, 180f);
     Actors _thisActor;
     Chain _internalState;
 
@@ -27,7 +31,7 @@ public class Actor_Chains : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
-        if(e.DoorState == Door.opened){
+        if(e.DoorState == Door.opening0){
             _internalState = Chain.loose;
         }
     }
@@ -41,6 +45,36 @@ public class Actor_Chains : MonoBehaviour {
         }
     }
 
+    void OnMouseDrag () {
+        if (_internalState == Chain.loose) {
+            Vector3 mouseDelta = Input.mousePosition;
+
+            Vector3 worldMouse = Camera.main.ScreenToWorldPoint (mouseDelta);
+
+            float angle = Mathf.Atan2 (
+                          worldMouse.y - transform.position.y, 
+                          worldMouse.x - transform.position.x) * Mathf.Rad2Deg;
+
+            float tempAngle;
+//            if (_chainRotationRange.Max < angle) {
+//                tempAngle = _chainRotationRange.Max;
+//            } else if (_chainRotationRange.Min > angle) {
+//                tempAngle = _chainRotationRange.Min;
+//            } else {
+                tempAngle = angle;
+//            }
+
+//            if (tempAngle < 0) { 
+//                tempAngle += 360;
+//            }
+            Debug.Log (tempAngle);
+
+            transform.localEulerAngles = new Vector3 (transform.localEulerAngles.x,
+                transform.localEulerAngles.y, 
+                tempAngle+ _rotationOffset);
+        }
+    }
+
     void OnMouseUp() {
         if (_internalState == Chain.loose) {
             dragging = false;
@@ -51,26 +85,39 @@ public class Actor_Chains : MonoBehaviour {
     }
 
     void Update() {
-        if (dragging) {
-            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-            Vector3 rayPoint = ray.GetPoint(distance);
-            rayPoint.z = transform.position.z;
-            transform.position = rayPoint;
-        }
+//        if (dragging) {
+//            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+//            Vector3 rayPoint = ray.GetPoint(distance);
+//            rayPoint.z = transform.position.z;
+//            transform.position = rayPoint;
+//        }
     }
+
 
 
 
     void CheckCollision() {
         Actors draggedVictim = Actors.Null;
         //check if dropped on actor
-        if (_draggedVictimGameObject != null) {          
+        if (_draggedVictimGameObject != null && _draggedVictimGameObject.GetComponent <Actor> () != null) {    
             draggedVictim = _draggedVictimGameObject.GetComponent <Actor> ()._thisActor;
             if(draggedVictim == Actors.Hole){
 				_draggedVictimGameObject.GetComponent<Hole> ().locked ();
+//                if (tempFix == 0) {
+//                    transform.eulerAngles = new Vector3 (0f, 0f, 0f);
+//                } else {
+//                    transform.localEulerAngles = new Vector3 (0f, 0f, 0f);
+//                }
+//                Quaternion tempRot = transform.localRotation;
+//                tempRot.z = 0f;
+//                transform.localRotation = tempRot;
+                transform.localEulerAngles = new Vector3 (0f, 0f, 0f);
+                _internalState = Chain.locked;
 //                GUISettings hole as undragintoable
 //                _draggedVictimGameObject.
             }
+        } else {
+            draggedVictim = Actors.Null;
         }
         Debug.Log ("Act: " + _draggedActor+", Vict: " + draggedVictim);
         Events.G.Raise(new DirectorUpdate(_draggedActor, draggedVictim));

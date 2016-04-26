@@ -17,6 +17,7 @@ public class Hole : MonoBehaviour {
 	public void locked(){
         _available = false;
         bc2.enabled = false;
+        chain_Anim.Play ("idle");
     }
 
     void OnEnable () {
@@ -28,7 +29,9 @@ public class Hole : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
+        Debug.Log (e.DoorState);
 		if (e.DoorState == Door.opening0) {
+            
             _available = true;
             bc2.enabled = true;
 			chain_Anim.Play ("break");
