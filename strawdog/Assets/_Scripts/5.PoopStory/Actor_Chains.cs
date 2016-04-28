@@ -16,9 +16,12 @@ public class Actor_Chains : MonoBehaviour {
     Actors _draggedActor;
     GameObject _draggedVictimGameObject;
 
+    AudioSource _audioSource;
+
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
         _draggedActor = Actors.Chain;
+        _audioSource = gameObject.GetComponent<AudioSource> ();
 
     }
 
@@ -41,6 +44,7 @@ public class Actor_Chains : MonoBehaviour {
             distance = Vector3.Distance (transform.position, Camera.main.transform.position);
             dragging = true;
         } else if (_internalState == Chain.locked) {
+            
             //TODO: Just Scene response things
         }
     }
@@ -105,6 +109,7 @@ public class Actor_Chains : MonoBehaviour {
 				_draggedVictimGameObject.GetComponent<Hole> ().locked ();
                 transform.localEulerAngles = new Vector3 (0f, 0f, 0f);
                 _internalState = Chain.locked;
+                _audioSource.Play ();
             }
         } else {
             draggedVictim = Actors.Null;

@@ -13,7 +13,7 @@ public class Actor_Shadow : MonoBehaviour {
     SpriteRenderer _spriteRend;
     Animator _shadowAnimator;
 
-
+    AudioSource _audioSource;
 
     string _thisJeer;
     string _thisTalk;
@@ -23,7 +23,7 @@ public class Actor_Shadow : MonoBehaviour {
         _boxC2D = gameObject.GetComponent<PolygonCollider2D> ();
         _spriteRend = gameObject.GetComponent <SpriteRenderer> ();
         _shadowAnimator = gameObject.GetComponent<Animator> ();
-
+        _audioSource = gameObject.GetComponent<AudioSource> ();
     }
 
     public void shadowSpawnComponent () {
@@ -101,6 +101,7 @@ public class Actor_Shadow : MonoBehaviour {
             _boxC2D.enabled = false;
 //            _spriteRend.enabled = false;
             _shadowAnimator.Play ("Death");
+            _audioSource.Play ();
             _shadowSp.ShadowDeathHandler ();
         }
     }
