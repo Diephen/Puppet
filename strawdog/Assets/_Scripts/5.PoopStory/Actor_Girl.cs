@@ -6,9 +6,11 @@ public class Actor_Girl : MonoBehaviour {
 
     Actors _thisActor;
     Girl _priorState;
+	Animator _girlAnimator;
 
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
+		_girlAnimator = gameObject.GetComponent<Animator> ();
     }
 
     void OnEnable () {
@@ -23,14 +25,20 @@ public class Actor_Girl : MonoBehaviour {
         switch (e.GirlState) {
         case Girl.atBlank:
 //            Debug.Log ("Girl At Blank");
+			_girlAnimator.SetBool ("isAtDoor", false);
+			_girlAnimator.SetBool ("isShadowTalk", false);
             break;
-        case Girl.atDoor:
+		case Girl.atDoor:
+			_girlAnimator.SetBool ("isAtDoor", true);
+			_girlAnimator.SetBool ("isShadowTalk", false);
 //            Debug.Log ("Girl is at door");
             //condition to allow door
             //snap girl into position
             break;
         case Girl.atShadow:
 //            Debug.Log ("Girl is at Shadow");
+			_girlAnimator.SetBool ("isShadowTalk", true);
+			_girlAnimator.SetBool ("isAtDoor", false);
             break;
         }
         _priorState = e.GirlState;
