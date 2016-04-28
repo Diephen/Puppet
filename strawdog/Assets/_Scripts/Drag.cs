@@ -51,7 +51,7 @@ public class Drag : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (dragging) {
-            Debug.Log (other.name);
+//            Debug.Log (other.name);
             _draggedVictimGameObject = other.gameObject;
         }
     }
