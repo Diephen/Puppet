@@ -79,6 +79,8 @@ public class Actor_Shadow : MonoBehaviour {
     }
 
     void Speak (string content) {
+		Debug.Log ("trigger talk animation");
+		_shadowAnimator.SetTrigger ("triggerTalk");
         _tm.text = content;
     }
 
