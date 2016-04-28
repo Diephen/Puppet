@@ -51,12 +51,15 @@ public class Drag : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (dragging) {
-//            Debug.Log (other.name);
-            _draggedVictimGameObject = other.gameObject;
+			if (other.CompareTag("Actor")) {
+//				Debug.Log (other.name);
+				_draggedVictimGameObject = other.gameObject;
+			}
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
+		Debug.Log (other.name);
         _draggedVictimGameObject = null;
     }
 
