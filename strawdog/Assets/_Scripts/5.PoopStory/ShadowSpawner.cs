@@ -9,6 +9,8 @@ public class ShadowSpawner : MonoBehaviour {
 
     [SerializeField] string[] jeerText = new string[5];
     [SerializeField] string[] talkText = new string[5];
+    [SerializeField] AudioClip[] jeerClip = new AudioClip[5];
+    [SerializeField] AudioClip[] talkClip = new AudioClip[5];
     [SerializeField] Vector3[] _spawnPos = new Vector3[5];
 
     [SerializeField] Ending _ending;
@@ -19,12 +21,12 @@ public class ShadowSpawner : MonoBehaviour {
 
     AudioSource _audioSource;
 
-    public string TalkGetter (int number) {
-        return talkText [number];
+    public AudioClip TalkGetter (int number) {
+        return talkClip [number];
     }
 
-    public string JeerGetter (int number) {
-        return jeerText [number];
+    public AudioClip JeerGetter (int number) {
+        return jeerClip [number];
     }
 
     public void ShadowDeathHandler () {

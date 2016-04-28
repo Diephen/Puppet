@@ -14,6 +14,7 @@ public class Actor_Shadow : MonoBehaviour {
     Animator _shadowAnimator;
 
     AudioSource _audioSource;
+    [SerializeField] AudioClip _shadowFade;
 
     string _thisJeer;
     string _thisTalk;
@@ -26,8 +27,13 @@ public class Actor_Shadow : MonoBehaviour {
         _audioSource = gameObject.GetComponent<AudioSource> ();
     }
 
+    void Start (){
+        Speak (true);
+    }
+
     public void shadowSpawnComponent () {
         _shadowSp = gameObject.GetComponentInParent<ShadowSpawner> ();
+        _shadowAnimator.SetTrigger ("triggerTalk");
     }
 
     void OnEnable () {
@@ -43,8 +49,8 @@ public class Actor_Shadow : MonoBehaviour {
         //getting the text information as well
 //        Debug.Log (number);
 //        Debug.Log (_shadowSp.TalkGetter (number));
-        _thisTalk = _shadowSp.TalkGetter (number);
-        _thisJeer = _shadowSp.JeerGetter (number);
+//        _thisTalk = _shadowSp.TalkGetter (number);
+//        _thisJeer = _shadowSp.JeerGetter (number);
     }
 
     public void ActFunction (PoopStoryAct e) {
@@ -57,7 +63,7 @@ public class Actor_Shadow : MonoBehaviour {
             Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Jeer");
-                Speak (_thisJeer);
+                Speak (false);
             }
             //existing in shadow
             break;
@@ -65,7 +71,7 @@ public class Actor_Shadow : MonoBehaviour {
             Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Talk");
-                Speak (_thisTalk);
+                Speak (true);
             }
             break;
         case Shadow.burn:
@@ -78,10 +84,17 @@ public class Actor_Shadow : MonoBehaviour {
 //        _priorState = e.ShadowState;
     }
 
-    void Speak (string content) {
-		Debug.Log ("trigger talk animation");
+    void Speak (bool isTalk) {
+//		Debug.Log ("trigger talk animation");
+        _audioSource.volume = 1f;
+        if (isTalk) {
+            _audioSource.clip = _shadowSp.TalkGetter (idNumber);
+        } else  {
+            _audioSource.clip = _shadowSp.JeerGetter (idNumber);
+        }
+        _audioSource.Play ();
 		_shadowAnimator.SetTrigger ("triggerTalk");
-        _tm.text = content;
+//        _tm.text = content;
     }
 
     void OnMouseDown(){
@@ -101,6 +114,8 @@ public class Actor_Shadow : MonoBehaviour {
             _boxC2D.enabled = false;
 //            _spriteRend.enabled = false;
             _shadowAnimator.Play ("Death");
+            _audioSource.volume = 0.12f;
+            _audioSource.clip = _shadowFade;
             _audioSource.Play ();
             _shadowSp.ShadowDeathHandler ();
         }

@@ -16,7 +16,7 @@ public class Start : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
         gameObject.GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(.6f);
-        Application.LoadLevel (2);
+        Application.LoadLevel (1);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
