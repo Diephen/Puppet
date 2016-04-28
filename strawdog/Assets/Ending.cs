@@ -9,6 +9,7 @@ public class Ending : MonoBehaviour {
     SpriteRenderer _spriteRenderer;
 
     [SerializeField] Animator _girlAnimator;
+    [SerializeField] Animator _monsterAnimator;
     [SerializeField] GameObject _blackOut;
 
     Fading _fading;
@@ -28,11 +29,13 @@ public class Ending : MonoBehaviour {
     public void EndingReveal(int end) {
         if(end == 1){
             _spriteRenderer.sprite = _ending1;
+            _monsterAnimator.Play ("MonsterWalkOut");
         } else if(end == 2){
             _spriteRenderer.sprite = _ending2;
             _girlAnimator.SetTrigger ("triggerEnd");
         } else if(end == 3) {
             _spriteRenderer.sprite = _ending3;
+            _monsterAnimator.Play ("MonsterWalkOut");
         }
         StartCoroutine (WaitForEnd());
     }
