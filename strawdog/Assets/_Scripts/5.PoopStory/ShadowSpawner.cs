@@ -11,6 +11,8 @@ public class ShadowSpawner : MonoBehaviour {
     [SerializeField] string[] talkText = new string[5];
     [SerializeField] Vector3[] _spawnPos = new Vector3[5];
 
+    [SerializeField] Ending _ending;
+
     int _shadowDeath = 0;
 
     Actor_Shadow _actShade;
@@ -67,10 +69,15 @@ public class ShadowSpawner : MonoBehaviour {
                 _shadowCnt++;
             }
         } else if(e.DoorState == Door.opened) {
-            if(_shadowDeath == _maxShadow){
+            if(_shadowDeath == 0){
+                _ending.EndingReveal(1);
                 //ENDING 
-            } else {
-                //OTHER ENDING
+            } else if (_shadowCnt == _shadowDeath){
+                _ending.EndingReveal(3);
+            }
+        } else if (e.DoorState == Door.locked0){
+            if (_maxShadow == _shadowCnt) {
+                _ending.EndingReveal (2);
             }
         }
     }

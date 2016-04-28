@@ -53,12 +53,13 @@ public class PoopDirector : MonoBehaviour {
             LightsPoopMessage (victim);
             break;
         }
-        _audioSource.Play ();
 
         //determine Chain State here
         if(_doorState == Door.opening0){
             _chainHandler = 0;
         }
+        _audioSource.volume = (float)_doorState / 6f;
+        _audioSource.Play ();
         Events.G.Raise (new PoopStoryAct (_girlState, _doorState, _chainState, _poopMonsterState, _shadowState, _lightsPoopState));
     }
 	
