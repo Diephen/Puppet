@@ -23,6 +23,8 @@ public class Actor_Girl : MonoBehaviour {
     }
 
     public void ActFunction (PoopStoryAct e) {
+		_girlAnimator.SetBool ("isAtDoor", false);
+		_girlAnimator.SetBool ("isShadowTalk", false);
         switch (e.GirlState) {
         case Girl.atBlank:
 //            Debug.Log ("Girl At Blank");
@@ -30,16 +32,18 @@ public class Actor_Girl : MonoBehaviour {
 			_girlAnimator.SetBool ("isShadowTalk", false);
             break;
 		case Girl.atDoor:
-			_girlAnimator.SetBool ("isAtDoor", true);
 			_girlAnimator.SetBool ("isShadowTalk", false);
+			_girlAnimator.SetBool ("isAtDoor", true);
+
 //            Debug.Log ("Girl is at door");
             //condition to allow door
             //snap girl into position
             break;
         case Girl.atShadow:
 //            Debug.Log ("Girl is at Shadow");
-			_girlAnimator.SetBool ("isShadowTalk", true);
 			_girlAnimator.SetBool ("isAtDoor", false);
+			_girlAnimator.SetBool ("isShadowTalk", true);
+
             break;
         }
         _priorState = e.GirlState;
