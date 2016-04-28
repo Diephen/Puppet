@@ -76,7 +76,9 @@ public class ShadowSpawner : MonoBehaviour {
                 _ending.EndingReveal(3);
             }
         } else if (e.DoorState == Door.locked0){
-            _ending.EndingReveal (2);
+            if (_maxShadow == _shadowCnt) {
+                _ending.EndingReveal (2);
+            }
         }
     }
 }
