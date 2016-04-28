@@ -71,7 +71,7 @@ public class ShadowSpawner : MonoBehaviour {
                 _shadowCnt++;
             }
         } else if(e.DoorState == Door.opened) {
-            if(_shadowDeath == 0){
+            if(_shadowCnt > _shadowDeath){
                 _ending.EndingReveal(1);
                 //ENDING 
             } else if (_shadowCnt == _shadowDeath){
