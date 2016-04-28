@@ -15,6 +15,8 @@ public class ShadowSpawner : MonoBehaviour {
 
     Actor_Shadow _actShade;
 
+    AudioSource _audioSource;
+
     public string TalkGetter (int number) {
         return talkText [number];
     }
@@ -25,6 +27,10 @@ public class ShadowSpawner : MonoBehaviour {
 
     public void ShadowDeathHandler () {
         _shadowDeath++;
+    }
+
+    void Start() {
+        _audioSource = gameObject.GetComponent<AudioSource> ();
     }
 
     void OnEnable () {
@@ -47,6 +53,7 @@ public class ShadowSpawner : MonoBehaviour {
             }
 
             if (_shadowCnt < (_maxShadow)) {
+                _audioSource.Play ();
                 GameObject newShadow = (GameObject)Instantiate (shadowPrefab, 
                     new Vector3 (_spawnPos[_shadowCnt].x, 
                         _spawnPos[_shadowCnt].y, 

@@ -34,6 +34,9 @@ public class Actor_Monster : MonoBehaviour {
         case PoopMonster.E:
             break;
         case PoopMonster.F:
+            Vector3 tempMonsterPos = transform.position;
+            tempMonsterPos.z = -0.7f;
+            transform.position = tempMonsterPos;
             break;
         }
         _priorState = e.PoopMonsterState;

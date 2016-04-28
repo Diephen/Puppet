@@ -8,10 +8,16 @@ public class PoopDirector : MonoBehaviour {
     PoopMonster _poopMonsterState = PoopMonster.A;
     Shadow _shadowState = Shadow.hide;
     LightsPoop _lightsPoopState = LightsPoop.center;
+
+    AudioSource _audioSource;
+
+    int _chainHandler = 0;
+
     public static int _turns;
 
     void Awake(){
-        _turns = 0;       
+        _turns = 0;    
+        _audioSource = gameObject.GetComponent<AudioSource> ();
     }
 
     void OnEnable () {
@@ -47,7 +53,12 @@ public class PoopDirector : MonoBehaviour {
             LightsPoopMessage (victim);
             break;
         }
+        _audioSource.Play ();
+
         //determine Chain State here
+        if(_doorState == Door.opening0){
+            _chainHandler = 0;
+        }
         Events.G.Raise (new PoopStoryAct (_girlState, _doorState, _chainState, _poopMonsterState, _shadowState, _lightsPoopState));
     }
 	
@@ -98,13 +109,17 @@ public class PoopDirector : MonoBehaviour {
         
         switch(victim){
         case Actors.Hole:
-//            _chainState = Chain.locked;
-            if (_doorState == Door.opening1) {
+            _chainHandler++;
+            Debug.Log (_chainHandler);
+            if(_chainHandler == 1){
                 _doorState = Door.locked1;
                 _poopMonsterState = PoopMonster.C;
-            } else {
-                _doorState--;
-                _poopMonsterState--;
+            } else if(_chainHandler == 2) {
+                _doorState = Door.locked0;
+                _poopMonsterState = PoopMonster.B;
+            } else if(_chainHandler == 3){
+                _doorState = Door.closed;
+                _poopMonsterState = PoopMonster.A;
             }
             break;
         default:
