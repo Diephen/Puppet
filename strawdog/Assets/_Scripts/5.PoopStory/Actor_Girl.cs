@@ -10,7 +10,8 @@ public class Actor_Girl : MonoBehaviour {
 
     void Awake () {
         _thisActor = gameObject.GetComponent <Actor> ()._thisActor;
-		_girlAnimator = gameObject.GetComponent<Animator> ();
+		// this is a temporary fix for girl animation
+		_girlAnimator = gameObject.GetComponentInChildren<Animator> ();
     }
 
     void OnEnable () {
