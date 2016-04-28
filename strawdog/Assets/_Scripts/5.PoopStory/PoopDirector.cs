@@ -58,7 +58,7 @@ public class PoopDirector : MonoBehaviour {
         if(_doorState == Door.opening0){
             _chainHandler = 0;
         }
-        _audioSource.volume = (float)_doorState / 6f;
+        _audioSource.volume = (float)_doorState / 7f;
         _audioSource.Play ();
         Events.G.Raise (new PoopStoryAct (_girlState, _doorState, _chainState, _poopMonsterState, _shadowState, _lightsPoopState));
     }
@@ -85,7 +85,7 @@ public class PoopDirector : MonoBehaviour {
             _girlState = Girl.atShadow;
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.talk;
+            _shadowState = Shadow.jeer;
             break;
         case Actors.LightsPoop:
             _girlState = Girl.atBlank;
@@ -142,27 +142,32 @@ public class PoopDirector : MonoBehaviour {
             _doorState++;
 //            _doorState = Door.closed;
             _poopMonsterState++;
-            _shadowState = Shadow.talk;
+            _shadowState = Shadow.jeer;
             break;
         case Actors.Door:
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.talk;
+            _shadowState = Shadow.jeer;
             break;
         case Actors.Chain:
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.talk;
+            _shadowState = Shadow.jeer;
             break;
         case Actors.PoopMonster:
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.talk;
+            _shadowState = Shadow.jeer;
             break;
         case Actors.LightsPoop:
             _doorState++;
             _poopMonsterState++;
-            _shadowState = Shadow.burn;
+            _shadowState = Shadow.jeer;
+            break;
+        case Actors.LightArea:
+            _doorState++;
+            _poopMonsterState++;
+            _shadowState = Shadow.jeer;
             break;
         default:
             _doorState++;

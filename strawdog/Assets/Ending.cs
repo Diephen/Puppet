@@ -13,6 +13,7 @@ public class Ending : MonoBehaviour {
     [SerializeField] GameObject _blackOut;
 
     Fading _fading;
+    bool _endTrigger = false;
 
     void Start(){
         _spriteRenderer = gameObject.GetComponent <SpriteRenderer> ();
@@ -23,10 +24,22 @@ public class Ending : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(_endTrigger){
+            if (Input.anyKeyDown) {
+                StartCoroutine (ChangeLevel ());
+            }
+        }
 	}
 
+    IEnumerator ChangeLevel(){
+      yield return new WaitForSeconds(0.5f);
+      float fadeTime = _fading.BeginFade (1);
+      yield return new WaitForSeconds(fadeTime);
+      Application.LoadLevel (0);
+    }
+
     public void EndingReveal(int end) {
+        Cursor.visible = false;
         if(end == 1){
             _spriteRenderer.sprite = _ending1;
             _monsterAnimator.Play ("MonsterWalkOut");
@@ -48,6 +61,8 @@ public class Ending : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         _spriteRenderer.enabled = true;
         _blackOut.SetActive (true);
+        Cursor.visible = true;
+        _endTrigger = true;
         _fading.BeginFade(-1);
         //        Application.LoadLevel (2);
     }

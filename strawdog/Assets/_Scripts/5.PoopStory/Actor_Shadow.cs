@@ -28,7 +28,7 @@ public class Actor_Shadow : MonoBehaviour {
     }
 
     void Start (){
-        Speak ();
+        Speak (true);
     }
 
     public void shadowSpawnComponent () {
@@ -63,7 +63,7 @@ public class Actor_Shadow : MonoBehaviour {
             Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Jeer");
-                Speak ();
+                Speak (false);
             }
             //existing in shadow
             break;
@@ -71,7 +71,7 @@ public class Actor_Shadow : MonoBehaviour {
             Debug.Log ("Before THISSHADOW");
             if(_isThisShadow){
                 Debug.Log ("S.Talk");
-                Speak ();
+                Speak (true);
             }
             break;
         case Shadow.burn:
@@ -84,10 +84,14 @@ public class Actor_Shadow : MonoBehaviour {
 //        _priorState = e.ShadowState;
     }
 
-    void Speak () {
+    void Speak (bool isTalk) {
 //		Debug.Log ("trigger talk animation");
         _audioSource.volume = 1f;
-        _audioSource.clip = _shadowSp.TalkGetter (idNumber);
+        if (isTalk) {
+            _audioSource.clip = _shadowSp.TalkGetter (idNumber);
+        } else  {
+            _audioSource.clip = _shadowSp.JeerGetter (idNumber);
+        }
         _audioSource.Play ();
 		_shadowAnimator.SetTrigger ("triggerTalk");
 //        _tm.text = content;
