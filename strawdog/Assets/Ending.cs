@@ -8,6 +8,8 @@ public class Ending : MonoBehaviour {
     [SerializeField] Sprite _ending3;
     SpriteRenderer _spriteRenderer;
 
+    [SerializeField] Animator _girlAnimator;
+
     Fading _fading;
 
     void Start(){
